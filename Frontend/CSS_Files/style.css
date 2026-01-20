@@ -1,0 +1,13 @@
+.one
+{
+    background-color: aqua;
+    text-align: center;
+    position: relative;
+    justify-items: center;
+    margin-left: 25%;
+    margin-right: 25%;
+    border: 2px solid black;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    
+}
