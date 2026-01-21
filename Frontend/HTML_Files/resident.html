@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resident Services - TGSPDCL</title>
+    <link rel="stylesheet" href="../CSS_Files/style.css">
+</head>
+
+<body>
+    <div class="one">
+        <h1>Consumer Portal</h1>
+        <form action="/view-bill" method="post">
+            <label for="refId" style="display:block; text-align:left; margin-bottom:5px; color:#555;">Enter Reference
+                ID:</label>
+            <input id="refId" name="referenceid" type="text" required placeholder="EBXXXXXX"
+                pattern="EB[A-Za-z0-9]{5,10}">
+            <div class="buttons">
+                <button type="submit">View Bill</button>
+            </div>
+        </form>
+        <br>
+        <a href="/" style="color:#777; font-weight:normal; font-size:0.9rem;">Back to Home</a>
+    </div>
+</body>
+
+</html>

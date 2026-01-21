@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - New Connection</title>
+    <link rel="stylesheet" href="../CSS_Files/style.css">
+</head>
+
+<body>
+    <form action="/register" method="post" class="one">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+            <h1 style="margin:0; text-align:left; font-size:1.5rem;">Admin Dashboard</h1>
+            <a href="/"
+                style="font-size:0.9rem; margin:0; padding:5px 10px; background:#fafafa; border:1px solid #ddd; color:#555;">Logout</a>
+        </div>
+        <hr style="border:0; border-top:1px solid #eee; margin:20px 0;">
+        <h2 style="font-size:1.2rem; color:#00acc1; margin-bottom:20px;">New Connection Registration</h2>
+
+        <div style="text-align:left; margin-bottom:5px; font-weight:bold; color:#555;">Consumer Name</div>
+        <input name="name" type="text" required minlength="3" placeholder="Full Name">
+
+        <div style="text-align:left; margin-bottom:5px; font-weight:bold; color:#555;">Phone Number</div>
+        <input name="phonenumber" type="tel" required pattern="[6-9][0-9]{9}" placeholder="10-digit Mobile">
+
+        <div style="text-align:left; margin-bottom:5px; font-weight:bold; color:#555;">Address</div>
+        <textarea name="address" rows="3" required
+            style="width: 100%; margin: 0 auto 20px auto; display: block; padding: 12px; font-size: 1rem; border: 1px solid #cfd8dc; border-radius: 6px; background-color: #fafafa; font-family:inherit;"></textarea>
+
+        <div style="text-align:left; margin-bottom:5px; font-weight:bold; color:#555;">Connection Type</div>
+        <select name="connectiontype" required
+            style="width: 100%; margin: 0 auto 20px auto; display: block; padding: 12px; font-size: 1rem; border: 1px solid #cfd8dc; border-radius: 6px; background-color: #fafafa;">
+            <option value="" disabled selected>Select Type</option>
+            <option value="Household">Household</option>
+            <option value="Commercial">Commercial</option>
+            <option value="Industry">Industry</option>
+        </select>
+
+        <div style="text-align:left; margin-bottom:5px; font-weight:bold; color:#555;">Reference ID</div>
+        <input name="referenceid" type="text" required placeholder="EBXXXXXX" pattern="EB[A-Za-z0-9]{5,10}"
+            title="Must start with EB followed by 5-10 alphanumeric characters">
+
+        <div class="buttons">
+            <button type="submit">Register Consumer</button>
+            <button type="reset">Clear Form</button>
+        </div>
+    </form>
+</body>
+
+</html>

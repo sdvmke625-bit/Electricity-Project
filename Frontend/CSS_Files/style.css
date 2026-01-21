@@ -1,13 +1,107 @@
-.one
-{
-    background-color: aqua;
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #e0f7fa;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.one {
+    background-color: #ffffff;
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 450px;
     text-align: center;
-    position: relative;
-    justify-items: center;
-    margin-left: 25%;
-    margin-right: 25%;
-    border: 2px solid black;
-    padding-top: 1%;
-    padding-bottom: 1%;
-    
+    border-top: 6px solid #00acc1;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.one h1 {
+    color: #006064;
+    margin-bottom: 2rem;
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+input[type="text"],
+input[type="tel"],
+input[type="number"],
+input[type="password"],
+input[type="email"] {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0 20px 0;
+    border: 1px solid #cfd8dc;
+    border-radius: 6px;
+    font-size: 1rem;
+    background-color: #fafafa;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input:focus {
+    border-color: #00acc1;
+    box-shadow: 0 0 0 3px rgba(0, 172, 193, 0.2);
+    outline: none;
+    background-color: #ffffff;
+}
+
+button {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.1s, background-color 0.3s;
+    margin: 10px 5px 0 5px;
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+button[type="submit"] {
+    background-color: #00acc1;
+    color: white;
+}
+
+button[type="submit"]:hover {
+    background-color: #00838f;
+}
+
+button[type="reset"] {
+    background-color: #cfd8dc;
+    color: #455a64;
+}
+
+button[type="reset"]:hover {
+    background-color: #b0bec5;
+}
+
+a {
+    display: inline-block;
+    margin-top: 15px;
+    color: #00acc1;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 5px 10px;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+a:hover {
+    background-color: #e0f7fa;
+    color: #00838f;
 }

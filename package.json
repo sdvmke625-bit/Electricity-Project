@@ -8,5 +8,17 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": ""
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sdvmke625-bit/Electricity-Project.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sdvmke625-bit/Electricity-Project/issues"
+  },
+  "homepage": "https://github.com/sdvmke625-bit/Electricity-Project#readme",
+  "description": "",
+  "dependencies": {
+    "express": "^5.2.1",
+    "mongoose": "^9.1.5"
+  }
 }

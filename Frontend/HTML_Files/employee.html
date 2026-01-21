@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Dashboard - Generate Bill</title>
+    <link rel="stylesheet" href="../CSS_Files/style.css">
+</head>
+
+<body>
+    <form action="/generate-bill" method="post" class="one">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+            <h1 style="margin:0; text-align:left; font-size:1.5rem;">Employee Portal</h1>
+            <a href="/"
+                style="font-size:0.9rem; margin:0; padding:5px 10px; background:#fafafa; border:1px solid #ddd; color:#555;">Logout</a>
+        </div>
+        <hr style="border:0; border-top:1px solid #eee; margin:20px 0;">
+        <h2 style="font-size:1.2rem; color:#00acc1; margin-bottom:20px;">Bill Generation</h2>
+
+        <div style="text-align:left; margin-bottom:5px; font-weight:bold; color:#555;">Consumer Reference Id</div>
+        <input type="text" name="referenceid" required placeholder="EBXXXXXX" pattern="EB[A-Za-z0-9]{5,10}"
+            title="Must start with EB followed by 5-10 alphanumeric characters">
+
+        <div style="text-align:left; margin-bottom:5px; font-weight:bold; color:#555;">Current Units</div>
+        <input type="number" name="units" required min="0" step="1" placeholder="kWh">
+
+        <div class="buttons">
+            <button type="submit">Generate Bill</button>
+            <button type="reset">Reset</button>
+        </div>
+    </form>
+</body>
+
+</html>

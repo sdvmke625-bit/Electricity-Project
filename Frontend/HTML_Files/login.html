@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TGSPDCL - Login</title>
+    <link rel="stylesheet" href="../CSS_Files/style.css">
+</head>
+
+<body>
+    <div class="one" style="max-width: 400px;">
+        <h1 style="margin-bottom: 20px;">TGSPDCL Portal</h1>
+        <h3 style="color:#0277bd; margin-bottom:15px; border-bottom: 1px solid #eee; padding-bottom:10px;">Staff Login
+        </h3>
+        <form action="/login" method="post">
+            <input type="text" name="username" placeholder="Username" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <button type="submit" style="width:100%; margin: 10px 0;">Login</button>
+        </form>
+        <div style="margin: 30px 0 20px 0; border-top: 1px solid #eee; padding-top: 20px;">
+            <p style="margin-bottom: 10px; color:#666;">Are you a Resident?</p>
+            <a href="/consumer"
+                style="background: #e0f2f1; padding: 10px 20px; border-radius: 5px; color: #00695c;">Check / Pay
+                Bill</a>
+        </div>
+        <div
+            style="margin-top:20px; font-size:0.8rem; color:#888; background:#f9f9f9; padding:10px; border-radius:5px;">
+            <p style="margin:0;"><strong>Admin(username/password):</strong> admin / admin123</p>
+            <p style="margin:5px 0 0 0;"><strong>Employee(username/password):</strong> employee / emp123</p>
+        </div>
+    </div>
+</body>
+
+</html>
