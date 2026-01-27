@@ -1,14 +1,36 @@
-# Electricity Billing System
+# Electricity Bill System
 
-## Project Description
-This is a web-based Electricity Billing System developed to streamline the process of managing electricity consumers, generating monthly bills, and facilitating online bill payments. The system is built using Node.js, Express, and MongoDB.
+A web-based application to manage and generate electricity bills with tiered rates, fine calculation, and duplicate validation.
 
-### Key Features
-- **Admin Module**: Allows administrators to register new consumers with details like name, phone number, address, and connection type (Household, Commercial, Industry).
-- **Employee Module**: Enables employees to generate bills based on unit consumption for specific consumer Reference IDs.
-- **Consumer Module**: Provides an interface for consumers to view their latest bill status and make payments online.
+## Features
+- **Registration**: Register new consumers with strict validation (Name alphabets only, Phone exactly 10 digits).
+- **Bill Generation**: Tiered calculation (0-50: 1.5, 50-100: 2.5, etc.), Minimum charge 25/-, Fine 150/-.
+- **Admin & Employee Portals**: Separate views for managing users and generating bills.
+- **Modular Design**: Separation of concerns (Frontend, Backend routes, Models).
 
-### Technologies Used
-- **Frontend**: HTML, CSS
-- **Backend**: Node.js, Express.js
-- **Database**: MongoDB
+## Prerequisites
+- Node.js installed on your system.
+- MongoDB installed and running.
+
+## How to Run
+
+1. **Clone/Download** the repository.
+2. Open a terminal in the project root folder.
+3. Install dependencies:
+   ```bash
+   npm install
+   ```
+4. Start the server:
+   ```bash
+   node Backend/app.js
+   ```
+5. Open your browser and visit:
+   `http://localhost:3000`
+
+## Default Credentials
+- **Admin**: `admin` / `admin123`
+- **Employee**: `employee` / `emp123`
+
+## Documentation
+- [Module Specification](docs/ModuleSpecification.md)
+- [Test Plan](docs/TestPlan.md)

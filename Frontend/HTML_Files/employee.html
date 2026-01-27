@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <form action="/generate-bill" method="post" class="one">
+    <form action="/employee/generate-bill" method="post" class="one" onsubmit="return validateForm()">
         <div style="display:flex; justify-content:space-between; align-items:center;">
             <h1 style="margin:0; text-align:left; font-size:1.5rem;">Employee Portal</h1>
             <a href="/"
@@ -19,17 +19,66 @@
         <h2 style="font-size:1.2rem; color:#00acc1; margin-bottom:20px;">Bill Generation</h2>
 
         <div style="text-align:left; margin-bottom:5px; font-weight:bold; color:#555;">Consumer Reference Id</div>
-        <input type="text" name="referenceid" required placeholder="EBXXXXXX" pattern="EB[A-Za-z0-9]{5,10}"
-            title="Must start with EB followed by 5-10 alphanumeric characters">
+        <input id="refInput" type="text" name="referenceid" required placeholder="EBXXXXXX" maxlength="12"
+            style="text-transform: uppercase;">
+        <div id="refError" style="color:red; font-size:0.8rem; display:none; margin-top: 5px; margin-bottom: 10px;">
+            Invalid ID format: Enter the exact ID starting with 'EB' (e.g. EB123456).</div>
 
         <div style="text-align:left; margin-bottom:5px; font-weight:bold; color:#555;">Current Units</div>
-        <input type="number" name="units" required min="0" step="1" placeholder="kWh">
+        <input id="unitsInput" type="number" name="units" required min="0" step="1" placeholder="kWh">
+        <div id="unitsError" style="color:red; font-size:0.8rem; display:none; margin-top: 5px; margin-bottom: 10px;">
+            Units cannot be negative: Enter total units consumed (Positive number only).</div>
 
         <div class="buttons">
             <button type="submit">Generate Bill</button>
-            <button type="reset">Reset</button>
+            <button type="reset" onclick="resetErrors()">Reset</button>
         </div>
     </form>
+
+    <script>
+        function validateForm() {
+            let isValid = true;
+
+            // Ref ID Validation
+            const refInput = document.getElementById('refInput');
+            const refError = document.getElementById('refError');
+            const refRegex = /^EB[A-Za-z0-9]{5,10}$/i;
+
+            if (!refRegex.test(refInput.value)) {
+                refError.style.display = 'block';
+                refInput.style.borderColor = 'red';
+                isValid = false;
+            } else {
+                refError.style.display = 'none';
+                refInput.style.borderColor = '#cfd8dc';
+            }
+
+            // Units Validation
+            const unitsInput = document.getElementById('unitsInput');
+            const unitsError = document.getElementById('unitsError');
+
+            if (unitsInput.value < 0 || unitsInput.value === '') {
+                unitsError.style.display = 'block';
+                unitsInput.style.borderColor = 'red';
+                isValid = false;
+            } else {
+                unitsError.style.display = 'none';
+                unitsInput.style.borderColor = '#cfd8dc';
+            }
+
+            return isValid;
+        }
+
+        function resetErrors() {
+            document.querySelectorAll('input').forEach(i => i.style.borderColor = '#cfd8dc');
+            document.getElementById('refError').style.display = 'none';
+            document.getElementById('unitsError').style.display = 'none';
+        }
+
+        document.getElementById('refInput').addEventListener('input', function (e) {
+            this.value = this.value.toUpperCase();
+        });
+    </script>
 </body>
 
 </html>

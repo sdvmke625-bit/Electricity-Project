@@ -7,8 +7,19 @@ Project Instructions
    npm install
 
 3. Start the server by running:
-   node Backend/node.js
-   (The app will connect to database 'electricitydb' at mongodb://127.0.0.1:27017/electricitydb)
+   npm start
 
-4. To use the app, open this file in your browser:
-   Frontend/HTML_Files/login.html
+4. Open your browser and go to:
+   http://localhost:4000
+
+5. Login Credentials:
+   - Admin:
+     Username: admin
+     Password: admin123
+
+   - Employee:
+     Username: employee
+     Password: emp123
+
+   - Consumer:
+     Use your unique Reference ID (e.g., EB123456) to view bills.

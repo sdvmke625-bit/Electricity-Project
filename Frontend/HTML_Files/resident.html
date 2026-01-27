@@ -11,11 +11,15 @@
 <body>
     <div class="one">
         <h1>Consumer Portal</h1>
-        <form action="/view-bill" method="post">
-            <label for="refId" style="display:block; text-align:left; margin-bottom:5px; color:#555;">Enter Reference
+        <form action="/consumer/view-bill" method="post" onsubmit="return validateForm()">
+            <label for="refId"
+                style="display:block; text-align:left; margin-bottom:5px; font-weight:bold; color:#555;">Enter Reference
                 ID:</label>
-            <input id="refId" name="referenceid" type="text" required placeholder="EBXXXXXX"
-                pattern="EB[A-Za-z0-9]{5,10}">
+            <input id="refInput" name="referenceid" type="text" required placeholder="EBXXXXXX"
+                pattern="EB[A-Za-z0-9]{5,10}" maxlength="12" style="text-transform: uppercase;">
+            <div id="refError"
+                style="color:red; font-size:0.8rem; display:none; margin-top: 5px; margin-bottom: 20px; text-align:left;">
+                Invalid ID format: Enter your unique consumer ID (e.g. EB123456).</div>
             <div class="buttons">
                 <button type="submit">View Bill</button>
             </div>
@@ -23,6 +27,29 @@
         <br>
         <a href="/" style="color:#777; font-weight:normal; font-size:0.9rem;">Back to Home</a>
     </div>
+
+    <script>
+        function validateForm() {
+            const refInput = document.getElementById('refInput');
+            const refError = document.getElementById('refError');
+            const refRegex = /^EB[A-Za-z0-9]{5,10}$/i;
+
+            if (!refRegex.test(refInput.value)) {
+                refError.style.display = 'block';
+                refInput.style.borderColor = 'red';
+                return false;
+            }
+            refError.style.display = 'none';
+            refInput.style.borderColor = '#cfd8dc';
+            return true;
+        }
+
+        document.getElementById('refInput').addEventListener('input', function (e) {
+            this.value = this.value.toUpperCase();
+            document.getElementById('refError').style.display = 'none';
+            this.style.borderColor = '#cfd8dc';
+        });
+    </script>
 </body>
 
 </html>

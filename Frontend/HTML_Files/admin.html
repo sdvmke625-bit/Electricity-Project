@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <form action="/register" method="post" class="one">
+    <form action="/admin/register" method="post" class="one" onsubmit="return validateForm()">
         <div style="display:flex; justify-content:space-between; align-items:center;">
             <h1 style="margin:0; text-align:left; font-size:1.5rem;">Admin Dashboard</h1>
             <a href="/"
@@ -18,34 +18,118 @@
         <hr style="border:0; border-top:1px solid #eee; margin:20px 0;">
         <h2 style="font-size:1.2rem; color:#00acc1; margin-bottom:20px;">New Connection Registration</h2>
 
+        <!-- Name Input -->
         <div style="text-align:left; margin-bottom:5px; font-weight:bold; color:#555;">Consumer Name</div>
-        <input name="name" type="text" required minlength="3" placeholder="Full Name">
+        <input id="nameInput" name="name" type="text" required placeholder="e.g. John Doe">
+        <div id="nameError" style="color:red; font-size:0.8rem; display:none; margin-top: 5px; margin-bottom: 10px;">
+            Invalid Name: Please enter the full name using alphabets only. No numbers or special characters allowed.
+        </div>
 
+        <!-- Phone Input -->
         <div style="text-align:left; margin-bottom:5px; font-weight:bold; color:#555;">Phone Number</div>
-        <input name="phonenumber" type="tel" required pattern="[6-9][0-9]{9}" placeholder="10-digit Mobile">
+        <input id="phoneInput" name="phonenumber" type="tel" required placeholder="e.g. 9876543210" maxlength="10">
+        <div id="phoneError" style="color:red; font-size:0.8rem; display:none; margin-top: 5px; margin-bottom: 10px;">
+            Invalid Phone: Enter a valid 10-digit mobile number starting with 6, 7, 8, or 9.</div>
 
+        <!-- Address Input -->
         <div style="text-align:left; margin-bottom:5px; font-weight:bold; color:#555;">Address</div>
         <textarea name="address" rows="3" required
             style="width: 100%; margin: 0 auto 20px auto; display: block; padding: 12px; font-size: 1rem; border: 1px solid #cfd8dc; border-radius: 6px; background-color: #fafafa; font-family:inherit;"></textarea>
 
+        <!-- Connection Type Input -->
         <div style="text-align:left; margin-bottom:5px; font-weight:bold; color:#555;">Connection Type</div>
         <select name="connectiontype" required
             style="width: 100%; margin: 0 auto 20px auto; display: block; padding: 12px; font-size: 1rem; border: 1px solid #cfd8dc; border-radius: 6px; background-color: #fafafa;">
             <option value="" disabled selected>Select Type</option>
-            <option value="Household">Household</option>
-            <option value="Commercial">Commercial</option>
-            <option value="Industry">Industry</option>
+            <option value="Household">Household (Rate starts @ 1.5)</option>
+            <option value="Commercial">Commercial (Rate starts @ 2.5)</option>
+            <option value="Industry">Industry (Rate starts @ 3.5)</option>
         </select>
 
+        <!-- Reference ID Input -->
         <div style="text-align:left; margin-bottom:5px; font-weight:bold; color:#555;">Reference ID</div>
-        <input name="referenceid" type="text" required placeholder="EBXXXXXX" pattern="EB[A-Za-z0-9]{5,10}"
-            title="Must start with EB followed by 5-10 alphanumeric characters">
+        <input id="refInput" name="referenceid" type="text" required placeholder="e.g. EB123456" maxlength="12"
+            style="text-transform: uppercase;">
+        <div id="refError" style="color:red; font-size:0.8rem; display:none; margin-top: 5px; margin-bottom: 10px;">
+            Invalid ID: detailed format is 'EB' followed by 5-10 alphanumeric characters.</div>
 
         <div class="buttons">
             <button type="submit">Register Consumer</button>
-            <button type="reset">Clear Form</button>
+            <button type="reset" onclick="resetErrors()">Clear Form</button>
         </div>
     </form>
+
+    <script>
+        function validateForm() {
+            let isValid = true;
+
+            // Name Validation
+            const nameInput = document.getElementById('nameInput');
+            const nameError = document.getElementById('nameError');
+            const nameRegex = /^[A-Za-z\s]+$/;
+
+            if (!nameRegex.test(nameInput.value)) {
+                nameError.style.display = 'block';
+                nameInput.style.borderColor = 'red';
+                isValid = false;
+            } else {
+                nameError.style.display = 'none';
+                nameInput.style.borderColor = '#cfd8dc';
+            }
+
+            // Phone Validation
+            const phoneInput = document.getElementById('phoneInput');
+            const phoneError = document.getElementById('phoneError');
+            const phoneRegex = /^[6-9][0-9]{9}$/;
+
+            if (!phoneRegex.test(phoneInput.value)) {
+                phoneError.style.display = 'block';
+                phoneInput.style.borderColor = 'red';
+                isValid = false;
+            } else {
+                phoneError.style.display = 'none';
+                phoneInput.style.borderColor = '#cfd8dc';
+            }
+
+            // Ref ID Validation
+            const refInput = document.getElementById('refInput');
+            const refError = document.getElementById('refError');
+            const refRegex = /^EB[A-Za-z0-9]{5,10}$/i;
+
+            if (!refRegex.test(refInput.value)) {
+                refError.style.display = 'block';
+                refInput.style.borderColor = 'red';
+                isValid = false;
+            } else {
+                refError.style.display = 'none';
+                refInput.style.borderColor = '#cfd8dc';
+            }
+
+            return isValid;
+        }
+
+        function resetErrors() {
+            document.querySelectorAll('input').forEach(i => i.style.borderColor = '#cfd8dc');
+            document.getElementById('nameError').style.display = 'none';
+            document.getElementById('phoneError').style.display = 'none';
+            document.getElementById('refError').style.display = 'none';
+        }
+
+        // Real-time strict input control
+        document.getElementById('nameInput').addEventListener('input', function (e) {
+            // Remove non-alphabets immediately
+            this.value = this.value.replace(/[^A-Za-z\s]/g, '');
+        });
+
+        document.getElementById('phoneInput').addEventListener('input', function (e) {
+            // Remove non-numbers immediately
+            this.value = this.value.replace(/[^0-9]/g, '');
+        });
+
+        document.getElementById('refInput').addEventListener('input', function (e) {
+            this.value = this.value.toUpperCase();
+        });
+    </script>
 </body>
 
 </html>
